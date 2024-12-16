@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+<body>
+	{% block content %}
+		<h2>Registered Users</h2>
+		{% if request.user.is_superuser or request.user.is_staff %}
+			<table border="2">
+				<tr>
+					<th>ID</th>
+					<th>Name</th>
+					<th>Email</th>
+					<th>Phone</th>
+				</tr>
+
+				{% for user in alldata %}
+
+				<tr>
+					<td>{{ user.id }}</td>
+					<td>{{ user.name }}</td>
+					<td>{{ user.emailid }}</td>
+					<td>{{ user.phoneNum }}</td>
+				</tr>
+			{% endfor %}
+
+			</table>
+
+		{% endif %}
+	{% endblock %}
+
+
+</body>

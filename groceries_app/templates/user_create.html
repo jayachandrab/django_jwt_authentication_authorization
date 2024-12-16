@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+<body>
+	{% block content %}
+		<form method="POST">
+			{% csrf_token %}
+			{% if request.user.is_superuser or request.user.is_staff %}
+				{{ form.as_p }}
+				<button type="submit">Submit Data</button>
+			{% else %}
+				The logged in user is not a superuser or staff user.
+				Please log in as a super/staff user to add/modify user data.
+			{% endif %}
+		</form>
+	{% endblock %}
+</body>

@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Loony Basket</title>
+<style>
+    body{
+        padding-top: 80px;
+        padding-bottom: 80px;
+    }
+    .fixed-header, .fixed-footer{
+        width: 100%;
+        position: fixed;
+        background: purple;
+        padding: 10px;
+        color: white;
+    }
+    .fixed-header{
+        top: 0;
+    }
+    .fixed-footer{
+        bottom: 0;
+    }
+    .container{
+        width: 100%;
+        margin: 40;
+    }
+    .column {
+        display: table;
+        float: left;
+        padding: 10px;
+        height: 400px;
+    }
+    .center {
+        width:400px;
+        text-align: center;
+        margin:0px auto;
+    }
+
+    nav a{
+        color: white;
+        text-decoration: none;
+        padding: 7px 25px;
+        display: inline-block;
+    }
+</style>
+</head>
+<body>
+    <div class="fixed-header">
+        <div class="container">
+            <nav>
+                <a href="{% url 'app_homepage' %}">Loony Basket</a>
+                <a></a>
+                <a></a>
+                <a></a>
+                <a></a>
+                <a href="{% url 'about_us' %}">About Us</a>
+                <a href="{% url 'services' %}">Services</a>
+                <a href="{% url 'contact_us' %}">Contact Us</a>
+            </nav>
+        </div>
+    </div>
+
+    <main role='main' class="container">
+        <div class="row">
+            {% if messages %}
+                {% for msg in messages %}
+                <div class ="alert alert-{{ msg.tags }}">
+                    <p></p>
+                    {{ msg }}
+                    <p></p>
+                </div>
+                {% endfor %}
+            {% endif %}
+        </div>
+    </main>
+    <a></a>
+    <a></a>
+    <div class="container">
+        {% block content %}
+
+        {% endblock %}
+    </div>
+    <div class="fixed-footer">
+        <div class="container">Copyright &copy; 2020 Loony Basket</div>
+    </div>
+
+</body>
+</html>

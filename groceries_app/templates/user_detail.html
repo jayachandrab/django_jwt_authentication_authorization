@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+<body>
+    {% block content %}
+    	<table border="2">
+    		<tr>
+    			<td>Id:</td><td>{{ object.id }}</td>
+    		</tr>
+    		<tr>
+    			<td>Username:</td><td>{{ object.name }}</td>
+    		</tr>
+    		<tr>
+    			<td>Email:</td><td>{{ object.emailid }}</td>
+    		</tr>
+    		<tr>
+    			<td>Phone:</td><td>{{ object.phoneNum }}</td>
+    		</tr>
+    	</table>
+
+        {% if request.user.is_superuser %}
+			<br>
+            <a href="{% url 'userupdate' object.id %}"> Update</a>
+		    <a href="{% url 'userdelete' object.id %}"> Delete</a>
+        {% else %}
+            <p>Login as a superuser to edit user info</p>
+        {% endif %}
+    {% endblock %}
+</body>
